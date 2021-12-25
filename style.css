@@ -4,6 +4,7 @@
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     box-sizing: border-box;
+    outline: none;
 }
 html{
     font-size: 22px;
