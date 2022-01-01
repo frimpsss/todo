@@ -9,7 +9,31 @@ document.querySelector("#total").textContent = taskNumber
 // overlay
 const overlay = document.querySelector('.overlay')
 
-addbtn.addEventListener('click', function(){
+addbtn.addEventListener('click', main)
+
+window.addEventListener('keyup', (e) =>{
+    if(e.key === 'Enter'){
+            main()
+    }
+})
+function hideErr(){
+    errMsg.textContent = ''
+    errMsg.classList.remove('sucess')
+    errMsg.classList.remove('fail')
+}
+// clear all btn
+clearbtn.addEventListener('click', function(){
+    tasks.innerHTML = ''
+    taskNumber = 0
+    document.querySelector("#total").textContent = taskNumber
+})
+
+document.querySelector("#total").textContent = taskNumber
+//reset function to put things to original if error
+function reset() {
+    userInput.value = ''
+}
+function main(){
     let enterdTask = userInput.value
     if(enterdTask.length == 0 || enterdTask === ' '){
         errMsg.textContent = "Failed: Input field Empty"
@@ -66,24 +90,6 @@ addbtn.addEventListener('click', function(){
     })
     }
     
-})
-
-function hideErr(){
-    errMsg.textContent = ''
-    errMsg.classList.remove('sucess')
-    errMsg.classList.remove('fail')
-}
-// clear all btn
-clearbtn.addEventListener('click', function(){
-    tasks.innerHTML = ''
-    taskNumber = 0
-    document.querySelector("#total").textContent = taskNumber
-})
-
-document.querySelector("#total").textContent = taskNumber
-//reset function to put things to original if error
-function reset() {
-    userInput.value = ''
 }
 
 
