@@ -42,9 +42,11 @@ function main(){
         reset()
     }
     else{
+    let id = genID()
+    localStorage.setItem(id, enterdTask)
     tasks.innerHTML += `
     <div class="task">
-    <p>${enterdTask}</p>
+    <p>${localStorage.getItem(id)}</p>
     <div>
         <button class="btn edit"><ion-icon name="create-outline"></ion-icon></button>
         <button class="btn delete"><ion-icon name="trash-bin-outline"></ion-icon></button>
@@ -53,7 +55,7 @@ function main(){
     `
     errMsg.textContent = "Sucess: task added"
     errMsg.classList.add('sucess')
-    setTimeout(hideErr, 1000)
+    setTimeout(hideErr, 0900)
     reset()
     taskNumber++
     document.querySelector("#total").textContent = taskNumber
@@ -90,6 +92,17 @@ function main(){
     })
     }
     
+}
+//seting unique id for local storande id
+
+function genID(){
+    const chars = ['a','b','c','A','B','C',0,1,2,3]
+    let id = 'f'
+    for(let i = 0; i < 6; ++i){
+        id += chars[Math.floor(Math.random() * chars.length)]
+    }
+
+    return id
 }
 
 
